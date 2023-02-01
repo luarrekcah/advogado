@@ -164,8 +164,8 @@
               <span>Excelência</span>
             </h1>
             <p>
-              <a href="#" class="btn btn-primary py-3 px-4"
-                >Solicite uma consulta grátis</a
+              <a href="#contato" class="btn btn-primary py-3 px-4"
+                >Agende sua consulta</a
               >
             </p>
           </div>
@@ -363,12 +363,13 @@
           </div>
           <div class="half p-3 p-md-5 ftco-animate" id="contato">
             <h3 class="mb-4">Agende sua consulta.</h3>
-            <form action="#">
+            <form id="agendar">
               <div class="form-group">
                 <input
                   type="text"
                   class="form-control"
                   placeholder="Seu nome"
+                  name="from_name"
                 />
               </div>
               <div class="form-group">
@@ -376,15 +377,20 @@
                   type="text"
                   class="form-control"
                   placeholder="Seu email"
+                  name="email"
                 />
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Assunto" />
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Assunto"
+                  name="assunto"
+                />
               </div>
               <div class="form-group">
                 <textarea
-                  name=""
-                  id=""
+                  name="message"
                   cols="30"
                   rows="7"
                   class="form-control"
@@ -394,7 +400,8 @@
               <div class="form-group">
                 <input
                   type="submit"
-                  value="Enviar Mensagem"
+                  id="button"
+                  value="Enviar"
                   class="btn btn-primary"
                 />
               </div>
@@ -626,5 +633,38 @@
       crossorigin="anonymous"
     ></script>
     <script src="js/main.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+
+    <script type="text/javascript">
+      emailjs.init("c5whYDFRiGQeJH6ih");
+    </script>
+    <script type="text/javascript">
+      const btn = document.getElementById("button");
+
+      document
+        .getElementById("agendar")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          btn.value = "Enviando...";
+
+          const serviceID = "default_service";
+          const templateID = "template_bkp77uk";
+
+          emailjs.sendForm(serviceID, templateID, this).then(
+            () => {
+              btn.value = "Enviar";
+              alert("E-mail enviado, aguarde um retorno!");
+            },
+            (err) => {
+              btn.value = "Enviar";
+              alert(JSON.stringify(err));
+            }
+          );
+        });
+    </script>
   </body>
 </html>
