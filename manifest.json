@@ -1,0 +1,26 @@
+{
+    "short_name": "Adv. Hiago Bastos Trindade",
+    "name": "Adv. Hiago Bastos Trindade - OAB - RO 9.858",
+    "description": "Advogado, bacharel em Direito pela Universidade Federal de Rondônia, atuante no mercado há mais de 5 anos.",
+    "icons": [
+      {
+        "src": "images/favicon.png",
+        "sizes": "64x64 32x32 24x24 16x16",
+        "type": "image/png"
+      },
+      {
+        "src": "images/logo192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "images/logo512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#eac15a",
+    "background_color": "#000000"
+  }
