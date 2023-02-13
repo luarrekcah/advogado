@@ -3,9 +3,9 @@
   <head>
     <title>Advogado Hiago Bastos Trindade</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
     <!--SEO CARDS-->
     <meta name="title" content="Advogado Hiago Bastos Trindade" />
     <meta
@@ -77,7 +77,10 @@
     <link rel="stylesheet" href="css/animate.css" />
     <link rel="stylesheet" href="css/owl.carousel.min.css" />
     <link rel="stylesheet" href="css/owl.theme.default.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.css"
+    />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
@@ -403,14 +406,6 @@
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Seu email"
-                  name="email"
-                />
-              </div>
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
                   placeholder="Assunto"
                   name="assunto"
                 />
@@ -660,37 +655,33 @@
       crossorigin="anonymous"
     ></script>
     <script src="js/main.js"></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
-    ></script>
-
-    <script type="text/javascript">
-      emailjs.init("c5whYDFRiGQeJH6ih");
-    </script>
     <script type="text/javascript">
       const btn = document.getElementById("button");
-
       document
         .getElementById("agendar")
         .addEventListener("submit", function (event) {
           event.preventDefault();
 
-          btn.value = "Enviando...";
+          const fromName = document.querySelector(
+            'input[name="from_name"]'
+          ).value;
+          const assunto = document.querySelector('input[name="assunto"]').value;
+          const message = document.querySelector(
+            'textarea[name="message"]'
+          ).value;
 
-          const serviceID = "default_service";
-          const templateID = "template_bkp77uk";
+          const whatsappUrl =
+            "https://api.whatsapp.com/send?phone=+556993544663&text=" +
+            "Nome: " +
+            fromName +
+            "%0A" +
+            "Assunto: " +
+            assunto +
+            "%0A" +
+            "Mensagem:%0A%0A" +
+            message;
 
-          emailjs.sendForm(serviceID, templateID, this).then(
-            () => {
-              btn.value = "Enviar";
-              alert("E-mail enviado, aguarde um retorno!");
-            },
-            (err) => {
-              btn.value = "Enviar";
-              alert(JSON.stringify(err));
-            }
-          );
+          window.open(whatsappUrl, "_blank");
         });
     </script>
   </body>
